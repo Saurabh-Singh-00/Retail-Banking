@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db : SQLAlchemy = SQLAlchemy(app)
 
 login_manager = LoginManager()
-login_manager.login_view = 'retail_banking.login'
+login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 
 db.init_app(app)
