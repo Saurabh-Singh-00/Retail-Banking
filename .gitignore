@@ -6,3 +6,6 @@
 
 # Ignore VSCode Settings
 .vscode
+
+# Ignore IntelliJ Settings
+.idea

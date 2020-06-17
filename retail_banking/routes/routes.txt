@@ -1,0 +1,21 @@
+“/login”
+
+# Executive Routes
+
+“/create_customer”
+“/update_customer/<int:id>”
+“/delete_customer/<int:id>”
+“/delete_account/<int:id>”
+“/customer_status”
+“/create_account”
+“/customer_search?q=type=’id|ssn’&value=’121’ ”
+
+
+# Cashier Routes
+
+“/account_status”
+“/account_search?q=type=’id|c_id’&value=’121’ ”
+“/deposit/<int:id>”
+“/withdraw/<int:id>”
+“/transfer/<int:id>”
+“/statement/<int:id>?page=1&per_page=5”

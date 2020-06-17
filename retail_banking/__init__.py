@@ -7,7 +7,7 @@ config = Config()
 
 app.config['SECRET_KEY'] = config.secret_key
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../db.sqlite'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db : SQLAlchemy = SQLAlchemy(app)
 
 from retail_banking import routes # Strictly place this import here only
