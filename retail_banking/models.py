@@ -1,6 +1,7 @@
-from retail_banking import db
-from sqlalchemy import Column, Integer, DateTime, Boolean, String, ForeignKey, Float
+from retail_banking import db, login_manager
+from sqlalchemy import Column, Integer, DateTime, Boolean, String, ForeignKey, Float, Date
 import datetime
+from flask_login import UserMixin
 
 ACC_TYPE = {
     "S": "SAVING",
@@ -25,7 +26,12 @@ ACC_STATUS = {
 }
 
 
-class Employee(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return Employee.query.get(int(user_id))
+
+
+class Employee(db.Model, UserMixin):
     id = db.Column(Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
@@ -38,17 +44,20 @@ class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ssn = db.Column(db.Integer, unique=True, nullable=False)
     name = db.Column(db.String(80), nullable=False)
-    dob = db.Column(db.DateTime, nullable=False)
+    dob = db.Column(db.Date, nullable=False)
     address = db.Column(db.String(256), nullable=False)
     state = db.Column(db.String(256), nullable=False)
     city = db.Column(db.String(256), nullable=False)
-    status = db.Column(db.String(256), default=CUSTOMER_STATUS['A'], nullable=False)
+    status = db.Column(
+        db.String(256), default=CUSTOMER_STATUS['A'], nullable=False)
 
 
 class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
-    account_type = db.Column(db.String(20), default=ACC_TYPE['S'], nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey(
+        'customer.id'), nullable=False)
+    account_type = db.Column(
+        db.String(20), default=ACC_TYPE['S'], nullable=False)
     balance = db.Column(db.Float(precision=2), default=0.0)
     status = db.Column(db.String(20), default=ACC_STATUS['A'])
 
@@ -64,13 +73,15 @@ class Transaction(db.Model):
 
 class CustomerActivity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey(
+        'customer.id'), nullable=False)
     message = db.Column(db.String(256), nullable=False)
     date_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
 
 class AccountActivity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey(
+        'account.id'), nullable=False)
     message = db.Column(db.String(256), nullable=False)
     date_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
