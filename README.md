@@ -3,9 +3,10 @@
 This is a flask app for Retail Banking System.
 
 ##### Project Setup
+- Fork this Project First
 - Open Command Prompt
 - Navigate to the repository you want to clone your project. Eg: `cd Desktop`
-- Clone this repository `git clone https://github.com/Saurabh-Singh-00/Retail-Banking.git`
+- Clone your forked repository `git clone https://github.com/<YOUR-GITHUB-USERNAME>/Retail-Banking.git`
 ![Clone](screenshots/git-clone.PNG "Clone")
 - Navigate to this repository `cd Retail-Banking`
 ![Navigate](screenshots/navigate.PNG "Navigate")
@@ -19,3 +20,7 @@ This is a flask app for Retail Banking System.
 ##### Run Project
 - `flask run`
 ![Flask run](screenshots/run.PNG "Run")
+
+
+##### Contribution
+- After pushing code to your forked repository please open a Pull Request.
