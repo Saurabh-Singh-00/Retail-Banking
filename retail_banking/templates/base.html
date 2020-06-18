@@ -11,6 +11,7 @@
     {% endif %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/css1.css"/>
 </head>
 
 <body>
@@ -56,6 +57,17 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url_for('customer_status') }}">Customer Details</a>
                         <a class="dropdown-item" href="#">Account Details</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account Operations
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Deposit Money</a>
+                        <a class="dropdown-item" href="#">Withdraw Money</a>
+                        <a class="dropdown-item" href="#">Transfer Money</a>
                     </div>
                 </li>
             </ul>

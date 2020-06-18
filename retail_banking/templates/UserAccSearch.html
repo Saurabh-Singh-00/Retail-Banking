@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+   
+    {% block content %}
+
+    <h3>Search for Existing Account Details</h3>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3></h3>
+            <form name="UserAccSearch" action="UserAccSearch.php" method="get">
+                <label for="AccountId"><b>AccountId</b></label>
+                <input type="text" placeholder="Enter AccountID" name="AccountId">
+                <br>
+                <p>OR</p>
+                <label for="CustomerId"><b>CustomerId</b></label>
+                <input type="text" placeholder="Enter CustomerID" name="CustomerId">
+                <br class="clear">
+                <input class="btn-submit" type="submit" name="submit" value="Search">
+            </form>
+        </div>
+    </div>
+ {% endblock %}
