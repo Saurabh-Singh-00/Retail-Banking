@@ -5,11 +5,11 @@
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Create Customer</legend>
+            <legend class="border-bottom mb-4">{{ title }}</legend>
             {% for field in form %}
-            {% if field.type != "SubmitField" or field.type != "" %}
+            {% if field.type != "SubmitField" %}
             <div class="form-group">
-                {{ field.label(class="form-control-label") }}
+                {% if field.widget.input_type != 'hidden' %} {{ field.label(class="form-control-label") }} {% endif %}
                 {% if field.errors %}
                 {{ field(class="form-control form-control-sm is-invalid") }}
                 <div class="invalid-feedback">

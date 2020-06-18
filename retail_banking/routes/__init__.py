@@ -29,10 +29,11 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route("/")
 @app.route("/home")
 def home():
     if not current_user.is_authenticated:
-        return redirect(url_for('retail_banking.login'))
+        return redirect(url_for('login'))
     if current_user.is_executive:
-        return render_template('executive/home.html')
-    return render_template('cashier/home.html')
+        return render_template('executive/home.html', home_route="active")
+    return render_template('cashier/home.html', home_route="active")

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content-section mt-4">
+    <form method="POST" action="">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Seach Customer</legend>
+            <div class="form-group row">
+                <label for="ssnInput" class="col-sm-2 col-form-label">SSN</label>
+                <div class="col-sm-10">
+                    <input required="required" type="text" class="form-control" id="ssnInput"
+                        placeholder="Social Security Number (SSN)">
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <button id="submitSearch" type="button" class="btn btn-primary btn-lg btn-block">Search</button>
+        </div>
+    </form>
+    <div>
+        <table class="table">
+            <thead>
+                <tr id="ssnHeading"></tr>
+            </thead>
+            <tbody>
+                <tr id="ssnResult"></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $("#submitSearch").on(
+            'click',
+            function () {
+                let ssn = $("#ssnInput").val();
+                if (ssn != "") {
+                    $.ajax({
+                        url: "http://127.0.0.1:5000/api/customer_details/" + ssn,
+                        contentType: "application/json",
+                        dataType: 'json',
+                        success: function (result) {
+                            var ssnHeading = $("#ssnHeading");
+                            var ssnResult = $("#ssnResult");
+                            ssnResult.empty();
+                            ssnHeading.empty();
+                            for (var key in result) {
+                                ssnHeading.append(`<th scope="col">` + key.toUpperCase() + `</th>`);
+                                ssnResult.append(`<td scope="col">` + result[key] + `</td>`);
+                                // console.log(result[key]);
+                            }
+                            if (Object.keys(result).length != 0 && result["Error"] == null) {
+                                var id = result["id"];
+                                ssnHeading.append(`<th scope="col">Operation</th>`)
+                                ssnResult.append('<td scope="col"><a href="http://127.0.0.1:5000/{{ operation }}_customer/' + id + '"> {{ operation }}  </a></td>');
+                }
+            }
+                    })
+                }
+            }
+        );
+    });
+</script>
+{% endblock scripts %}
