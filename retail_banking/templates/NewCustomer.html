@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+   
+    {% block content %}
+
+    <h3>Add New Customer</h3>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3></h3>
+            <form name="NewCustomer" action="NewCustomer.php" method="get">
+                <label for="CustomerSSNID"><b>Customer SSNID</b></label>
+                <input type="text" placeholder="Enter SSNID" name="CustomerSSNID">
+                <br>
+                <label for="name"><b>name</b></label>
+                <input type="text" placeholder="Enter Customer Name" name="name">
+                <br>
+                <label for="Age"><b>Age</b></label>
+                <input type="number" placeholder="Enter Age" name="Age">
+                <br>
+                <label for="Address"><b>Address</b></label>
+                <input type="text" placeholder="Enter Address" name="Address">
+                <br>
+                <label for="State"><b>State</b></label>
+                <input type="text" placeholder="Enter State" name="State">
+                <br>
+                <label for="City"><b>City</b></label>
+                <input type="text" placeholder="Enter SSNID" name="City">
+                <br>
+                <input class="btn-submit" type="submit" name="submit" value="Search">
+            </form>
+        </div>
+    </div>
+ {% endblock %}

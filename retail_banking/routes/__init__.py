@@ -8,4 +8,9 @@ from retail_banking.routes import cashier_routes
 @app.route("/index")
 @app.route("/home")
 def index():
-    return "Hello World!"
+    return render_template("layout.html")
+
+@app.route("/newcustomer/")
+def Customer():
+    return render_template("NewCustomer.html")
+
