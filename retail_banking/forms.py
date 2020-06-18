@@ -18,4 +18,4 @@ class CreateCustomerForm(FlaskForm):
     address = TextField('Address', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
-    submit = SubmitField('Create')
+    submit = SubmitField('Submit')

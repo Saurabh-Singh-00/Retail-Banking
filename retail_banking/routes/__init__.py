@@ -29,18 +29,11 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/index")
-def index():
-    return render_template("base.html")
-
-@app.route("/newcustomer/")
-def Customer():
-    return render_template("NewCustomer.html")
 
 @app.route("/home")
 def home():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     if current_user.is_executive:
-        return render_template('executive/home.html')
-    return render_template('cashier/home.html')
+        return render_template('executive/home.html', home_route="active")
+    return render_template('cashier/home.html', home_route="active")
