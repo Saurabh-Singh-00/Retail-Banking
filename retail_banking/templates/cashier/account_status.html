@@ -1,12 +1,12 @@
 {% extends "base.html"  %}
 {% block content  %}
 <center>
-    <h3>Customer Status</h3>
+    <h3>Account Status</h3>
     <table class="table table-hover table-sm">
         <thead class="thead-dark">
             <tr>
                 <th>Activity ID#</th>
-                <th>Customer ID</th>
+                <th>Account ID</th>
                 <th>Message</th>
                 <th>Last Updated</th>
             </tr>
@@ -16,7 +16,7 @@
             {% for activity in customer_activities %}
             <tr>
                 <td>{{ activity['id'] }}</td>
-                <td>{{ activity['customer_id'] }}</td>
+                <td>{{ activity['account_id'] }}</td>
                 <td>{{ activity['message'] }}</td>
                 <td>{{ activity['date_time'] }}</td>
             </tr>

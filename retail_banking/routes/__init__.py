@@ -29,7 +29,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-
+@app.route("/")
 @app.route("/home")
 def home():
     if not current_user.is_authenticated:

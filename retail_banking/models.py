@@ -36,7 +36,7 @@ class Employee(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
     name = db.Column(db.String(80), nullable=False)
-    dob = db.Column(db.String(80), nullable=False)
+    dob = db.Column(db.Date, nullable=False)
     is_executive = db.Column(db.Boolean(), default=False)
 
     def serialize(self):
@@ -91,6 +91,8 @@ class Account(db.Model):
 
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    account_id = db.Column(db.Integer, db.ForeignKey(
+        'account.id'), nullable=False)
     src_account_type = db.Column(db.String(20), nullable=True)
     des_account_type = db.Column(db.String(20), nullable=True)
     amount = db.Column(db.Float(precision=2), default=0.0)
