@@ -23,7 +23,7 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 more-itertools==8.1.0
 mpi4py==3.0.3
-Pillow==7.0.0
+Pillow==8.3.2
 pycodestyle==2.5.0
 pylint==2.4.4
 pyrsistent==0.15.7
